@@ -13,13 +13,16 @@ togglbutton.render(
     const folderElem = $('.col1', elem) || $('.taskCell:not(.tc_title)', elem);
     let folderName = folderElem && folderElem.firstChild.textContent;
 
+    const projectId = togglbutton.findProjectIdByName(folderName.toString());
+
     folderName =
       !folderName || folderName === 'No Folder' ? '' : ' - ' + folderName;
 
     const link = togglbutton.createTimerLink({
       className: 'toodledo',
       buttonType: 'minimal',
-      description: taskElem.textContent + folderName
+      description: taskElem.textContent + folderName,
+      projectId: projectId
     });
 
     const newElem = document.createElement('div');
